@@ -202,3 +202,9 @@ maybe mit +x php
 
 MYSQL
 mysql -u [USER] -p'[PASSWORD]'
+
+HASHCAT (Windows)
+.\hashcat.exe -a [ATTACKTYPE] -m [HASHTYPE] [PATHTOHASHES] [PATHTODICTIONARY] -r [PATHTORULE]
+ATTACKTYPE : 0 for dictionary/dictionary-rule attack
+HASHTYPE : tunnelsup.com/hash-analyzer/, hashcat.net/wiki/doku.php?id=example_hashes
+PATHTORULE : \rules\best64.rule is good
