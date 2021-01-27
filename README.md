@@ -1,7 +1,7 @@
 # docs-ctf-cheatsheet
 ### NMAP:
-nmap -sC -sV -oA nmap/initial IPADRESS (standart)
-nmap -p- -T5 -sC -sV -oA nmap/second IPADRESS (quick scan of all ports)
+```shell nmap -sC -sV -oA nmap/initial IPADRESS``` (standart)
+```shell nmap -p- -T5 -sC -sV -oA nmap/second IPADRESS``` (quick scan of all ports)
 
 -A : Enables OS Detection, Version Detection, Script Scanning and Traceroute all in one
 -p- : Enables scanning across all ports, not just the top 1000
@@ -12,9 +12,13 @@ nmap -p- -T5 -sC -sV -oA nmap/second IPADRESS (quick scan of all ports)
 ### NETCAT:
 send data:
 	reciever:
-	nc -l -p 1234 > FILE.NAME       (sometimes netcat instead of nc!)
+	```shell
+	nc -l -p 1234 > FILE.NAME
+	``` (sometimes netcat instead of nc!)
 	sender:
+	```shell
 	nc -w 3 DESTINATION 1234 < FILE.NAME
+	```
 
 ### MSF:
 search
