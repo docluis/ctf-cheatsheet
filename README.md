@@ -200,3 +200,5 @@ GOBUSTER
 ./gobuster dir -u http://ADRESS/ -w /opt/SecLists/Discovery/Web-Content/raft-small-words.txt
 maybe mit +x php
 
+MYSQL
+mysql -u [USER] -p'[PASSWORD]'
