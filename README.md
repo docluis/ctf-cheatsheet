@@ -237,3 +237,13 @@ mysql -u [USER] -p'[PASSWORD]'
 ATTACKTYPE : 0 for dictionary/dictionary-rule attack
 HASHTYPE : tunnelsup.com/hash-analyzer/, hashcat.net/wiki/doku.php?id=example_hashes
 PATHTORULE : \rules\best64.rule is good
+
+### SQLMAP
+```shell
+sqlmap -r [FULLFILEPATHTOREQUEST] -dump
+```
+--dbs : dump database names
+-D [DB] : choose Target Database
+-T [TABLE] : choose Target Table
+-dump : dump target table
+ --dbms=[DBTYPE] : choose DBType (mysql)
