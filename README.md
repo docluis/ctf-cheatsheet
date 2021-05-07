@@ -60,6 +60,7 @@ send data:
 sender:
 ```shell
 python -m SimpleHTTPServer 8083
+python3 -m http.server 8083
 ```
 reciever:
 ```shell
