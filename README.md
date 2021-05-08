@@ -182,6 +182,11 @@ Exploit /usr/bin/menu with SUID :
 	export PATH=/tmp:$PATH
 	/usr/bin/menu
 
+### CHECK FOR ALOWED COMMANDS
+```bash
+sudo -l
+```
+
 
 ### DNS PROBLEM (for Hack The Box)
 sudo nano /etc/hosts
