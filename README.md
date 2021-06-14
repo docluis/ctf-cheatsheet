@@ -148,17 +148,6 @@ sudo -l
 ### Remote
 * enum4linux [OPTIONS] [IP] - works for windows and linux SMB SAMBA
 
-
-## SMBClient
-```bash
-smbclient //[IP]/[DIRECTORY] -U [USERNAME]
-```
-
-## NFS
-```bash
-sudo mount -t nfs [IP]:[tragetdirectory] /tmp/mount/ -nolock
-```
-
 ## SUID
 find SUID : `find / -perm -u=s -type f 2>/dev/null`\
 Exploit /usr/bin/menu with SUID :
@@ -235,3 +224,13 @@ sqlmap -r [FULLFILEPATHTOREQUEST] -dump
 -T [TABLE] : choose Target Table\
 -dump : dump target table\
  --dbms=[DBTYPE] : choose DBType (mysql)
+
+## SMBClient
+```bash
+smbclient //[IP]/[DIRECTORY] -U [USERNAME]
+```
+
+## NFS
+```bash
+sudo mount -t nfs [IP]:[tragetdirectory] /tmp/mount/ -nolock
+```
