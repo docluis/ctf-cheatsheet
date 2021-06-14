@@ -171,6 +171,7 @@ ssh-keygen -f [NAME]
 ```
 >now i can write the [NAME].pub file content (except for the last part with my USER@IP) and add “ssh-rsa “ before the key if not there) to the /home/[USER]/.ssh/authorized_keys/, then
 ```bash
+chmod 700 [NAME]
 ssh -i [NAME] [USER]@[IP]
 ```
 
