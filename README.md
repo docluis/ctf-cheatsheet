@@ -204,8 +204,8 @@ new panel: <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>c</kbd>\
 rename panel: <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>,</kbd>\
 split panel vertical: <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>%</kbd>\
 split panel horizontal: <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>“</kbd>\
-navigate between panel: <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>pfeiltasten</kbd>\
-resize panel: hold <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>pfeiltasten</kbd>
+navigate between panel: <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>arrowkey</kbd>\
+resize panel: hold <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>arrowkey</kbd>
 
 ## GOBUSTER
 ```bash
