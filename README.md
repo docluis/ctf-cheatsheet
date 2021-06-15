@@ -71,14 +71,14 @@ move out of a session: <kbd>CTRL</kbd> + <kbd>z</kbd>
 attacker: `sudo tcpdump ip proto \icmp -i tun0`\
 target: `ping [local tun0 ip] -c 1`
 
-## BROKEN AUTHENTICATION:
+## BROKEN AUTHENTICATION
 password guessing/bruteforce\
 weak session cookies\
 registration of existing user “ admin” (with space) and gain all rights of “admin”
 1. try register as randomname
 2. if “randomname has already been taken” try register with “ randomname” and see what happens
 
-## XML EXTERNAL ENTITY (XXE):
+## XML EXTERNAL ENTITY (XXE)
 try :
 ```xml
 <?xml version="1.0"?>
@@ -93,7 +93,7 @@ try :
  </userInfo>
 ```
 
-## XSS PAYLOADS:
+## XSS PAYLOADS
 ```html
 <script>alert(“Hello World”)</script>
 document.write
@@ -148,7 +148,7 @@ sudo -l
 * LinEnum
 * LinPEAS
 * WinPEAS
-* pspys (lists runnin processes)
+* pspys (lists running processes)
 ### Remote
 * enum4linux [OPTIONS] [IP] - works for windows and linux SMB SAMBA
 
@@ -216,8 +216,8 @@ mysql -u [USER] -p'[PASSWORD]'
 ```shell
 .\hashcat.exe -a [ATTACKTYPE] -m [HASHTYPE] [PATHTOHASHES] [PATHTODICTIONARY] -r [PATHTORULE]
 ```
-ATTACKTYPE : 0 for dictionary/dictionary-rule attack
-HASHTYPE : tunnelsup.com/hash-analyzer/, hashcat.net/wiki/doku.php?id=example_hashes
+>ATTACKTYPE : 0 for dictionary/dictionary-rule attack\
+HASHTYPE : tunnelsup.com/hash-analyzer/, hashcat.net/wiki/doku.php?id=example_hashes\
 PATHTORULE : \rules\best64.rule is good
 
 ## SQLMAP
