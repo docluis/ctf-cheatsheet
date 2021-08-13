@@ -242,13 +242,14 @@ PATHTORULE : \rules\best64.rule is good
 
 ## SQLMAP
 ```bash
-sqlmap -r [FULLFILEPATHTOREQUEST] -dump
+sqlmap -r [FULLFILEPATHTOREQUEST] -p [PARAM IN REQ BODY]
+sqlmap -u [URL]/?[PARAMNAME]=param1
 ```
 > --dbs : dump database names\
 -D [DB] : choose Target Database\
 -T [TABLE] : choose Target Table\
 -dump : dump target table\
- --dbms=[DBTYPE] : choose DBType (mysql)
+--dbms=[DBTYPE] : choose DBType (mysql)
 
 ## SMBClient
 ```bash
