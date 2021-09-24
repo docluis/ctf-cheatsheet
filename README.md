@@ -3,6 +3,7 @@
 ```bash
 nmap -sC -sV -oA nmap/initial IPADRESS
 nmap -p- -T5 -sC -sV -oA nmap/second IPADRESS
+nmap -p443 --script ssl-enum-ciphers IPADRESS
 ```
 > -A : Enables OS Detection, Version Detection, Script Scanning and Traceroute all in one\
 -p- : Enables scanning across all ports, not just the top 1000\
