@@ -249,10 +249,11 @@ PATHTORULE : \rules\best64.rule is good
 
 ## SQLMAP
 ```bash
-sqlmap -r [FULLFILEPATHTOREQUEST] -p [PARAM IN REQ BODY]
+sqlmap -r [FULLFILEPATHTOREQUEST] -p [PARAM IN REQ BODY] --proxy="http://127.0.0.1:8080"
 sqlmap -u [URL]/?[PARAMNAME]=param1
 ```
 > --dbs : dump database names\
+--proxy="http://127.0.0.1:8080"\\
 -D [DB] : choose Target Database\
 -T [TABLE] : choose Target Table\
 -dump : dump target table\
