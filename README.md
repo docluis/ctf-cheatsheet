@@ -120,8 +120,17 @@ try :
   <lastName>&name;</lastName>
  </userInfo>
 ```
+## Cross-Site-Scripting (XSS)
+* DOM Based
+> JavaScript execution happens directly in browser without any new pages being loaded or data submitted to backend code.
+* Reflected
+> When user-supplied data in an HTTP request is included in the webpage source without any validation. (Cookie Stealing!)
+* Stored
+> XSS payload is stored on the web application (in a database, for example) and then gets run when other users visit the site or web page. (e.g. XSS in Forum Post)
+* Blind
+> Simmilar to stored, just payload is not seen working. (e.g. contact form)
 
-## XSS PAYLOADS
+### XSS PAYLOADS
 ```html
 <script>alert(“Hello World”)</script>
 document.write
