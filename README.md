@@ -160,7 +160,7 @@ http://domain/page.php?file=data://text/plain;base64,QW9DMyBpcyBmdW4hCg==
 ```
 > LFI can lead to RCE.
 
-## LOG POSIONING
+## LOG POISONING
 ```http
 GET / HTTP/1.1
 Host: 127.0.0.1:1337
