@@ -273,7 +273,7 @@ resize panel: hold <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>arrowkey</kbd>
 ## GOBUSTER
 ```bash
 gobuster dir -u http://ADRESS/ -w /opt/SecLists/Discovery/Web-Content/raft-small-words.txt
-maybe mit +x php
+maybe mit +x .php
 ```
 
 ## MYSQL
