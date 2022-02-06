@@ -248,6 +248,12 @@ chmod 700 [NAME]
 ssh -i [NAME] [USER]@[IP]
 ```
 
+### PORT TUNNELING / PORT FORWARDING
+how to tunnel a port when connected via ssh:\
+make sure empty line first: <kbd>Enter</kbd> <kbd>Enter</kbd>\
+enter: `~C` + <kbd>Enter</kbd>\ `-L [PORT ON LOCAL MACHINE]:127.0.0.1:[PORT ON REMOTE MACHINE]`
+> now traffic on local machine [PORT ON LOCAL MACHINE] gets forwarded (and back) to [PORT ON REMOTE MACHINE]
+
 ## PYTHON VIRTUAL ENVIRONMENT
 env init: `python3 -m venv [NAME UMGEBUNG]`\
 env load: `source [NAME UMGEBUNG]/bin/activate`\
