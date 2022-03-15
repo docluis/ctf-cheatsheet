@@ -239,6 +239,9 @@ sudo nano /etc/hosts
 ```
 > add [IPADRESS] [DOMAIN], save and it should work!
 
+## SHELL VIA LFI
+When having LFI try including `www.website.com/view.php?page=../../../../../proc/self/environ`. Now this file can contian ssh passwords or a way to poison to file and execute code.
+
 ## SSH:
 ```bash
 ssh-keygen -f [NAME]
