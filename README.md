@@ -204,11 +204,6 @@ tasklist
 netstat -an
 ```
 
-## CRACKMAPEXEC CME
-```bash
-crackmapexec smb -u [UsernameFile or Username] -p [PasswordFile or Password] --shares
-```
-
 ## POST EXPLOITATION WINDOWS
 ```powershell
 Get-WmiObject -Class win32_OperatingSystem (Power Shell)
@@ -334,9 +329,23 @@ sqlmap -u [URL]/?[PARAMNAME]=param1
 -dump : dump target table\
 --dbms=[DBTYPE] : choose DBType (mysql)
 
-## SMBClient
+## SMB
 ```bash
-smbclient //[IP]/[DIRECTORY] -U [USERNAME]
+smbclient //[IP]/[SHARE] -U [USERNAME]
+```
+
+### Enummerate SMB with CRACKMAPEXEC CME
+```bash
+crackmapexec smb -u [UsernameFile or Username] -p [PasswordFile or Password] --shares
+crackmapexec smb -u 'nonexistantuser' -p '' --shares
+```
+
+### Mount Windows SMB SHARE to Linux Client (with cifs)
+```bash
+sudo mkdir /mnt/[NAME]
+sudo mount -t cifs //[IP]/[SHARE] /mnt/[NAME]
+sudo mount -t cifs -o 'username=[USERNAME],password=[PASSWORD]' //[IP]/[SHARE] /mnt/[NAME]
+sudo umount /mnt/[NAME] (to unmount)
 ```
 
 ## NFS
