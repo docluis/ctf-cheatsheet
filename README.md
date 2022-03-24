@@ -307,6 +307,7 @@ maybe mit +x .php
 ## MYSQL
 ```bash
 mysql -u [USER] -p'[PASSWORD]'
+mysql -u [USER] -p'[PASSWORD]' -h [HOST/IP]
 ```
 
 ## HASHCAT (Windows)
