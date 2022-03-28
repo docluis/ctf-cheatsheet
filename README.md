@@ -304,6 +304,12 @@ gobuster dir -u http://ADRESS/ -w /opt/SecLists/Discovery/Web-Content/raft-small
 maybe mit +x .php
 ```
 
+## GIT
+```bash
+git log
+git show [COMMIT-ID]
+```
+
 ## MYSQL
 ```bash
 mysql -u [USER] -p'[PASSWORD]'
