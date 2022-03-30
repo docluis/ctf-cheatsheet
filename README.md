@@ -301,7 +301,7 @@ resize panel: hold <kbd>CTRL</kbd> <kbd>B</kbd> + <kbd>arrowkey</kbd>
 ## GOBUSTER
 ```bash
 gobuster dir -u http://ADRESS/ -w /opt/SecLists/Discovery/Web-Content/raft-small-words.txt
-maybe mit +x .php
+maybe mit +x .php, .txt
 ```
 
 ## GIT
@@ -358,4 +358,22 @@ sudo umount /mnt/[NAME] (to unmount)
 ## NFS
 ```bash
 sudo mount -t nfs [IP]:[tragetdirectory] /tmp/mount/ -nolock
+```
+
+## Common Applications
+
+### Joomla
+```
+/administrator -> admin login
+/administrator/manifests/files/joomla.xml -> contains version
+```
+> when beeing able to access admin panel, rce is pretty straight forward (edit template with php reverse shell)
+
+### Apache Tomcat
+```
+/manager -> login, usualy only allowed from localhost (try default creds in seclists), check if proxy (like AJP) is running
+/manager/text/deploy -> allows upload of .war applications (with creds, possible reverse shell with msfvenom)
+```
+```
+/usr/share/tomcat[VERSION]/etc/tomcat-users.xml -> file contains tomcat credentials (other locations possible too)
 ```
