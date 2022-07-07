@@ -428,3 +428,24 @@ sudo mount -t nfs [IP]:[tragetdirectory] /tmp/mount/ -nolock
 ```
 /usr/share/tomcat[VERSION]/etc/tomcat-users.xml -> file contains tomcat credentials (other locations possible too)
 ```
+## Incident Response
+```
+w - show who is logged on and what they are doing
+```
+```
+ps -eaf --forest
+ls -la /proc/[PROCID] | grep cwd - show current working directory of spawned shell
+kill -9 [PROCID] - kill process
+tcpdump -i [INTERFACE] -s 0 -w tcpdump.cap -n "port not 22" - capture how attackers try to get a shell (wireshark tcpdump.cap)
+```
+```
+ss -anp | grep [PROCID] - see ip and port of reverse shell
+ss -lntp - list all open ports
+```
+```
+grep [PART OF IP] /var/log/apache2/access.log
+```
+after patching apache:
+```
+service apache2 restart
+```
