@@ -114,7 +114,7 @@ get "normal" shell: `shell`\
 move out of a session: <kbd>CTRL</kbd> + <kbd>z</kbd>
 
 ## CHECK IF SOMETHING IS EXECUTED
-attacker: `sudo tcpdump ip proto \icmp -i tun0`\
+attacker: `sudo tcpdump -i tun0 icmp`
 target: `ping [local tun0 ip] -c 1`
 
 ## XML EXTERNAL ENTITY (XXE)
