@@ -388,6 +388,12 @@ sqlmap -u [URL]/?[PARAMNAME]=param1
 -dump : dump target table\
 --dbms=[DBTYPE] : choose DBType (mysql)
 
+## HYDRA
+```bash
+export HYDRA_PROXY_HTTP=http://127.0.0.1:8080 # set a proxy
+hydra -l "Administrator" -P /opt/SecLists/Passwords/Leaked-Databases/rockyou-20.txt [DOMAIN]  http-post-form "/:username=^USER^&password=^PASS^:Your Login Name or Password is invalid" -V -I
+```
+
 ## HASHCAT (Windows)
 ```shell
 .\hashcat.exe -a [ATTACKTYPE] -m [HASHTYPE] [PATHTOHASHES] [PATHTODICTIONARY] -r [PATHTORULE]
