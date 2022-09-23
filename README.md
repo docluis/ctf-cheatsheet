@@ -464,3 +464,8 @@ after patching apache:
 ```
 service apache2 restart
 ```
+
+## Vim magic
+```bash
+:%s/stuffiwanttoremove,\(.*\),stufftoremove/\1/g     # \(.*\) will be matched to \1
+```
