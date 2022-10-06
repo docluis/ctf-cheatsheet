@@ -395,6 +395,7 @@ db # list databases
 use <db>
 show collections
 db.<collection name>.find() # lists all entries for one collection
+db.tasks.insertOne({<name>: <content>})
 ```
 
 ## HYDRA
