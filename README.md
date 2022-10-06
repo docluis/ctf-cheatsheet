@@ -388,6 +388,15 @@ sqlmap -u [URL]/?[PARAMNAME]=param1
 -dump : dump target table\
 --dbms=[DBTYPE] : choose DBType (mysql)
 
+## MONGODB cli
+```bash
+mongo "mongodb://user:pass@localhost:27017/myplace"
+db # list databases
+use <db>
+show collections
+db.<collection name>.find() # lists all entries for one collection
+```
+
 ## HYDRA
 ```bash
 export HYDRA_PROXY_HTTP=http://127.0.0.1:8080 # set a proxy
