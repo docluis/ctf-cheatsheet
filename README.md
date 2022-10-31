@@ -186,6 +186,7 @@ http://domain/page.php?file=data://text/plain;base64,QW9DMyBpcyBmdW4hCg==
 /proc/self/cmdline - get commandline of current process
 /proc/self/environ - get environment variables
 /proc/self/exe - get binary
+/etc/nginx/sites-enabled/default - find other web servers on the system
 ```
 > retrieve all information about all processes:
 ```bash
