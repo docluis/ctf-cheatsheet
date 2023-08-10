@@ -429,6 +429,12 @@ crackmapexec smb -u [UsernameFile or Username] -p [PasswordFile or Password] --s
 crackmapexec smb -u 'nonexistantuser' -p '' --shares
 ```
 
+### Enummerate SMB Share Path
+> Use this to find the location for Shares with write access to execute uploaded files via LFI
+```bash
+nmap --script smb-enum-shares.nse [IP]
+```
+
 ### Mount Windows SMB SHARE to Linux Client (with cifs)
 ```bash
 sudo mkdir /mnt/[NAME]
