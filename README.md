@@ -188,6 +188,7 @@ http://domain/page.php?file=data://text/plain;base64,QW9DMyBpcyBmdW4hCg==
 /proc/self/environ - get environment variables
 /proc/self/exe - get binary
 /etc/nginx/sites-enabled/default - find other web servers on the system
+etc/apache2/sites-available/000-default.conf - apache2
 ```
 > retrieve all information about all processes:
 ```bash
